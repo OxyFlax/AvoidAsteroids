@@ -18,11 +18,8 @@ enum GameState {
 class GameScene: SKScene, SKPhysicsContactDelegate {
     var logo: SKSpriteNode!
     var gameOver: SKSpriteNode!
-    
     var gameState = GameState.ShowingLogo
-    
     var player: SKSpriteNode!
-    
     var scoreLabel: SKLabelNode!
     
     var score = 0 {
@@ -31,33 +28,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    //var backgroundMusic: SKAudioNode!
-    
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
+        // Setup your scene here
         let backgroundMusic = SKAudioNode(fileNamed: "music.m4a")
         addChild(backgroundMusic)
-        
         createPlayer()
-        
         createSky()
-        
         createBackground()
-        
         createGround()
-        
         createScore()
-        
         createLogos()
         
         physicsWorld.gravity = CGVectorMake(0.0, -5.0)
         physicsWorld.contactDelegate = self
-        
     }
     
-    
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-       /* Called when a touch begins */
+       // Called when a touch begins
         switch gameState {
         case .ShowingLogo:
             gameState = .Playing
@@ -86,8 +73,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
    
     override func update(currentTime: CFTimeInterval) {
-        /* Called before each frame is rendered */
-        guard player != nil else { return }
+        // Called before each frame is rendered
+        guard let _ = player else { return }
         let value = player.physicsBody!.velocity.dy * 0.001
         let rotate = SKAction.rotateToAngle(value, duration: 0.1)
         
@@ -138,8 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         player.physicsBody!.contactTestBitMask = player.physicsBody!.collisionBitMask // if the player touch anything, he's dead
         player.physicsBody?.dynamic = false // plane responds to physics
         
-        if(false) {"Comment line below if you want the ship beeing able to land!"}
-        player.physicsBody?.collisionBitMask = 0
+        player.physicsBody?.collisionBitMask = 0 // Ship can land (delete this line) or not
         
         let frame2 = SKTexture(imageNamed: "player-2")
         let frame3 = SKTexture(imageNamed: "player-3")
@@ -224,7 +210,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         topRock.zPosition = -20
         bottomRock.zPosition = -20
         
-        
         // 2
         let rockCollision = SKSpriteNode(color: UIColor.clearColor(), size: CGSize(width: 32, height: frame.height))
         rockCollision.physicsBody = SKPhysicsBody(rectangleOfSize: rockCollision.size)
@@ -234,7 +219,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(topRock)
         addChild(bottomRock)
         addChild(rockCollision)
-        
         
         // 3
         let xPosition = frame.width + topRock.frame.width
@@ -274,8 +258,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createScore() {
-        scoreLabel = SKLabelNode(fontNamed: "Optima-ExtraBlack")
-        scoreLabel.fontSize = 24
+        scoreLabel = SKLabelNode(fontNamed: Score.kScoreFont)
+        scoreLabel.fontSize = CGFloat(Score.kScoreFontSize)
         
         scoreLabel.position = CGPointMake(CGRectGetMaxX(frame) - 20, CGRectGetMaxY(frame) - 40)
         scoreLabel.horizontalAlignmentMode = .Right

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51D7A98B1CCC8F6900ABD2B3 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D7A98A1CCC8F6900ABD2B3 /* Constants.swift */; };
 		51F0D5A71CCBB52200C020C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0D5A61CCBB52200C020C7 /* AppDelegate.swift */; };
 		51F0D5A91CCBB52200C020C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 51F0D5A81CCBB52200C020C7 /* GameScene.sks */; };
 		51F0D5AB1CCBB52200C020C7 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F0D5AA1CCBB52200C020C7 /* GameScene.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		51D7A98A1CCC8F6900ABD2B3 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../Constants.swift; sourceTree = "<group>"; };
 		51F0D5A31CCBB52200C020C7 /* AvoidAsteroids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AvoidAsteroids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51F0D5A61CCBB52200C020C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51F0D5A81CCBB52200C020C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		51F0D5A51CCBB52200C020C7 /* AvoidAsteroids */ = {
 			isa = PBXGroup;
 			children = (
+				51D7A98A1CCC8F6900ABD2B3 /* Constants.swift */,
 				51F0D5BC1CCBB54900C020C7 /* Contents */,
 				51F0D5A61CCBB52200C020C7 /* AppDelegate.swift */,
 				51F0D5A81CCBB52200C020C7 /* GameScene.sks */,
@@ -174,6 +177,7 @@
 				51F0D5AB1CCBB52200C020C7 /* GameScene.swift in Sources */,
 				51F0D5AD1CCBB52200C020C7 /* GameViewController.swift in Sources */,
 				51F0D5A71CCBB52200C020C7 /* AppDelegate.swift in Sources */,
+				51D7A98B1CCC8F6900ABD2B3 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +331,7 @@
 				51F0D5BB1CCBB52200C020C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
