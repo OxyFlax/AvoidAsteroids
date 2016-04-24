@@ -3,11 +3,10 @@
 //  AvoidAsteroids
 //
 //  Created by Arnaud Pasquelin on 23/04/2016.
-//  Copyright (c) 2016 Arnaud Pasquelin. All rights reserved.
-//
+//  Copyright © 2016 Arnaud Pasquelin. All rights reserved.
 //
 //  Background: Designed by Freepik.com
-//  Spaceship: dribbble.com
+//  Spaceship: Designed by Freepik.com
 //
 
 

@@ -5,6 +5,10 @@
 //  Created by Arnaud Pasquelin on 23/04/2016.
 //  Copyright © 2016 Arnaud Pasquelin. All rights reserved.
 //
+//  Background: Designed by Freepik.com
+//  Spaceship: Designed by Freepik.com
+//
+
 
 import UIKit
 
