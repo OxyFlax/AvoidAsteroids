@@ -5,6 +5,11 @@
 //  Created by Arnaud Pasquelin on 23/04/2016.
 //  Copyright (c) 2016 Arnaud Pasquelin. All rights reserved.
 //
+//
+//  Background: Designed by Freepik.com
+//  Spaceship: dribbble.com
+//
+
 
 import SpriteKit
 import GameplayKit
@@ -62,7 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         case .Playing:
             player.physicsBody?.velocity = CGVectorMake(0, 0)
-            player.physicsBody?.applyImpulse(CGVectorMake(0, 20))
+            player.physicsBody?.applyImpulse(CGVectorMake(0, 30))
             
         case .Dead:
             let scene = GameScene(fileNamed: "GameScene")!
@@ -75,7 +80,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func update(currentTime: CFTimeInterval) {
         // Called before each frame is rendered
         guard let _ = player else { return }
-        let value = player.physicsBody!.velocity.dy * 0.001
+        let value = player.physicsBody!.velocity.dy * 0.002
         let rotate = SKAction.rotateToAngle(value, duration: 0.1)
         
         player.runAction(rotate)
@@ -96,7 +101,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             return
         }
-        
         if contact.bodyA.node == player || contact.bodyB.node == player {
             if let explosion = SKEmitterNode(fileNamed: "PlayerExplosion") {
                 explosion.position = player.position
@@ -115,7 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func createPlayer() {
-        let playerTexture = SKTexture(imageNamed: "player-1")
+        let playerTexture = SKTexture(imageNamed: "spaceship-1")
         player = SKSpriteNode(texture: playerTexture)
         player.zPosition = 10
         player.position = CGPoint(x: frame.width / 6, y: frame.height * 0.75)
@@ -127,20 +131,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         player.physicsBody?.collisionBitMask = 0 // Ship can land (delete this line) or not
         
-        let frame2 = SKTexture(imageNamed: "player-2")
-        let frame3 = SKTexture(imageNamed: "player-3")
-        let animation = SKAction.animateWithTextures([playerTexture, frame2, frame3, frame2], timePerFrame: 0.01)
+        let frame2 = SKTexture(imageNamed: "spaceship-2")
+        let frame3 = SKTexture(imageNamed: "spaceship-3")
+        let animation = SKAction.animateWithTextures([playerTexture, frame2, frame3, frame2], timePerFrame: 0.05)
         let runForever = SKAction.repeatActionForever(animation)
         
         player.runAction(runForever)
     }
     
     func createSky() {
-        let topSky = SKSpriteNode(color: UIColor(hue: 0.55, saturation: 0.14, brightness: 0.97, alpha: 1), size: CGSize(width: frame.width, height: frame.height * 0.67))
+        let topSky = SKSpriteNode(color: UIColor.blackColor(), size: CGSize(width: frame.width, height: frame.height * 0.67))
         topSky.anchorPoint = CGPoint(x: 0.5, y: 1)
         
-        let bottomSky = SKSpriteNode(color: UIColor(hue: 0.55, saturation: 0.16, brightness: 0.96, alpha: 1), size: CGSize(width: frame.width, height: frame.height * 0.33))
-        topSky.anchorPoint = CGPoint(x: 0.5, y: 1)
+        let bottomSky = SKSpriteNode(color: UIColor.blackColor(), size: CGSize(width: frame.width, height: frame.height * 0.33))
+        bottomSky.anchorPoint = CGPoint(x: 0.5, y: 1)
         
         topSky.position = CGPoint(x: CGRectGetMidX(frame), y: frame.size.height)
         bottomSky.position = CGPoint(x: CGRectGetMidX(frame), y: bottomSky.frame.height / 2)
@@ -159,7 +163,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let background = SKSpriteNode(texture: backgroundTexture)
             background.zPosition = -30
             background.anchorPoint = CGPointZero // position from where element is outside the screen
-            background.position = CGPoint(x: (backgroundTexture.size().width * CGFloat(i)) - CGFloat(1 * i), y: 100)
+            background.position = CGPoint(x: (backgroundTexture.size().width * CGFloat(i)) - CGFloat(1 * i), y: 0)
             addChild(background)
             
             let moveLeft = SKAction.moveByX(-backgroundTexture.size().width, y: 0, duration: 20)
@@ -264,7 +268,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         scoreLabel.position = CGPointMake(CGRectGetMaxX(frame) - 20, CGRectGetMaxY(frame) - 40)
         scoreLabel.horizontalAlignmentMode = .Right
         scoreLabel.text = "SCORE: 0"
-        scoreLabel.fontColor = UIColor.blackColor()
+        scoreLabel.fontColor = UIColor.whiteColor()
         
         addChild(scoreLabel)
     }
